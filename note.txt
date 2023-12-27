@@ -1,0 +1,9 @@
+<scope>  ke scope estefade az dependency ra neshan midahad ke test faghat hengam test kardan az an estefade mikonim ta compile ke faghat
+hengam compile kardan va dar lib ma nemiavarda ya provided ke ham hengam develope az an estefade mikonim ham test
+
+validate validate kardan pom
+compile compile kardan pom
+test   test app ra run mikonad
+package compile+test
+install roye local an ra deploy mikonad jar file ha ra
+deploy roye remote deploye mikonad
