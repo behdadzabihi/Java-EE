@@ -1,4 +1,4 @@
-package com.nikamooz.javaweb.session2;
+package com.javaweb.jetty;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

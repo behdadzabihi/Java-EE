@@ -1,4 +1,4 @@
-package com.nikamooz.javaweb.session2;
+package com.javaweb.jetty;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +17,9 @@ public class InsertProductServlet extends HttpServlet {
     Connection cn;
     public void init(){
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            cn = DriverManager.getConnection("jdbc:mysql://192.168.1.41:3306/javaweb", "postgres", "123456");
+            Class.forName("org.postgresql.Driver");
+            cn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/file_data_db", "postgres", "123456");
+
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -46,7 +47,7 @@ public class InsertProductServlet extends HttpServlet {
             String name = req.getParameter("name");
             String model = req.getParameter("model");
             String factory = req.getParameter("factory");
-            PreparedStatement ps = cn.prepareStatement("insert into product_tbl (name, model, factory) values (?, ? , ?)");
+            PreparedStatement ps = cn.prepareStatement("insert into product (name, model, factory) values (?, ? , ?)");
             ps.setString(1, name);
             ps.setString(2, model);
             ps.setString(3, factory);

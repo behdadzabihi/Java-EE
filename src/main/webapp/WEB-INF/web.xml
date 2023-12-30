@@ -6,13 +6,13 @@
 
   <display-name>Session2 Web Application</display-name>
 
-<!--  <servlet>-->
-<!--    <servlet-name>HelloServlet</servlet-name>-->
-<!--    <servlet-class>com.nikamooz.javaweb.session2.HelloServlet</servlet-class>-->
-<!--  </servlet>-->
+  <servlet>
+    <servlet-name>HelloServlet</servlet-name>
+    <servlet-class>com.javaweb.jetty.HelloServlet</servlet-class>
+  </servlet>
 
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>HelloServlet</servlet-name>-->
-<!--    <url-pattern>/hello</url-pattern>-->
-<!--  </servlet-mapping>-->
+  <servlet-mapping>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
 </web-app>
