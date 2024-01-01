@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 10/24/2019
-  Time: 5:35 PM
+  User: drp
+  Date: 01.01.24
+  Time: 17:17
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,14 +10,15 @@
 <head>
     <title>Insert Product</title>
 </head>
-<body>
-<form method="post" action="/insertProduct">
+<form action="IPS" method="post">
     <table>
         <tr><td>Name</td><td><input type="text" name="name"/></td></tr>
         <tr><td>Model</td><td><input type="text" name="model"/></td></tr>
         <tr><td>Factory</td><td><input type="text" name="factory"/></td></tr>
-        <tr><td></td><td><input type="submit" name="Insert" value="Insert"/></td></tr>
+        <tr><td></td><td><input type="submit" name="Submit" value="Insert"/><input type="submit" name="Cancel" value="Cancel"/></td></tr>
     </table>
 </form>
+<body>
+
 </body>
 </html>
