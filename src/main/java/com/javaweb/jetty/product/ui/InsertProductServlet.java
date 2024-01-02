@@ -3,18 +3,15 @@ package com.javaweb.jetty.product.ui;
 import com.javaweb.jetty.product.dao.ProductDao;
 import com.javaweb.jetty.product.domain.Product;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-@WebServlet(name = "IPS", urlPatterns = {"/insertProduct"})
+@WebServlet(name = "InsertProductServlet", urlPatterns = {"/insertProduct"})
 public class InsertProductServlet extends HttpServlet {
 
     ProductDao productDao=new ProductDao();
@@ -28,13 +25,14 @@ public class InsertProductServlet extends HttpServlet {
         process(req, resp);
     }
 
-    public void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+    public void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             String name = req.getParameter("name");
             String model = req.getParameter("model");
             String factory = req.getParameter("factory");
-        Product product=new Product(name,model,factory);
-        productDao.save(product);
-
+            Product product=new Product(name,model,factory);
+            productDao.save(product);
+            RequestDispatcher dispatcher=req.getRequestDispatcher("/viewProduct");
+            dispatcher.forward(req,resp);
         }
 
     }

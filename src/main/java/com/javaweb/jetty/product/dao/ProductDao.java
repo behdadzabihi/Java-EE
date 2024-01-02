@@ -28,7 +28,6 @@ public class ProductDao {
             ps.setString(3,product.getFactory());
             ps.executeUpdate();
             cn.commit();
-            cn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -42,10 +41,9 @@ public class ProductDao {
             ps.setString(1,product.getName());
             ps.setString(2,product.getModel());
             ps.setString(3,product.getFactory());
-            ps.setInt(4,product.getId());
+            ps.setLong(4,product.getId());
             ps.executeUpdate();
             cn.commit();
-            cn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -56,10 +54,9 @@ public class ProductDao {
         try {
             Connection cn = ConnectionUtility.getConnection();
             PreparedStatement ps=cn.prepareStatement(deleteSQL);
-            ps.setInt(1,product.getId());
+            ps.setLong(1,product.getId());
             ps.executeUpdate();
             cn.commit();
-            cn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -72,26 +69,25 @@ public class ProductDao {
             PreparedStatement ps=cn.prepareStatement(selectAllSQL);
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
-                int id=rs.getInt("id");
+                Long id=rs.getLong("id");
                 String name=rs.getString("name");
                 String model=rs.getString("model");
                 String factory=rs.getString("factory");
                 result.add(new Product(id,name,model,factory));
             }
             cn.commit();
-            cn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return result;
     }
 
-    public Product findOne(Integer id){
+    public Product findOne(Long id){
         Product product=null;
         try {
             Connection cn = ConnectionUtility.getConnection();
             PreparedStatement ps=cn.prepareStatement(findSQL);
-            ps.setInt(1,id);
+            ps.setLong(1,id);
             ResultSet rs= ps.executeQuery();
             while (rs.next()){
                String name=rs.getString("name");
@@ -100,7 +96,6 @@ public class ProductDao {
                product=new Product(id,name,model,factory);
             }
             cn.commit();
-            cn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

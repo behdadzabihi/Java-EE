@@ -2,19 +2,19 @@ package com.javaweb.jetty.product.domain;
 
 public class Product {
 
-    Integer id;
+    Long id;
     String name;
     String model;
     String factory;
 
-    public Product(Integer id, String name, String model, String factory) {
+    public Product(Long id, String name, String model, String factory) {
         this.id = id;
         this.name = name;
         this.model = model;
         this.factory = factory;
     }
 
-    public Product(Integer id) {
+    public Product(Long id) {
         this.id = id;
     }
 
@@ -27,11 +27,11 @@ public class Product {
     public Product() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

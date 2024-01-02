@@ -1,8 +1,8 @@
-<%@ page import="com.javaweb.jetty.product.domain.Product" %><%--
-  Created by IntelliJ IDEA.
-  User: drp
-  Date: 01.01.24
-  Time: 17:58
+<%@ page import="com.javaweb.jetty.product.domain.Product" %>
+Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 10/31/2019
+  Time: 6:07 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 </head>
 <body>
 <%
-    Product product= (Product) application.getAttribute("product");
+    Product product = (Product) request.getAttribute("product");
 %>
 <form method="post" action="/editProduct">
     <table>
