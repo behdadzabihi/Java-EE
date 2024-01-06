@@ -1,4 +1,4 @@
-package com.javaweb.jetty.color;
+package com.javaweb.jetty.sample.color;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

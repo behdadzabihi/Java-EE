@@ -1,4 +1,4 @@
-package com.javaweb.jetty.logout;
+package com.javaweb.jetty.sample.logout;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

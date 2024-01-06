@@ -1,4 +1,4 @@
-package com.javaweb.jetty.home;
+package com.javaweb.jetty.fillter.listener.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,16 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Home",urlPatterns = {"/home"})
-public class HomeServlet extends HttpServlet {
+@WebServlet(name = "ExceptionHandlerServlet", urlPatterns = "/exception")
+public class ExceptionHandlerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        process(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        process(req, resp);
+    }
+
+    private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher("/exception.jsp").forward(request, response);
     }
 }

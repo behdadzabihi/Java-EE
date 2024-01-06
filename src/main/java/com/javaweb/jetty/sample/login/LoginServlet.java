@@ -1,4 +1,4 @@
-package com.javaweb.jetty.login;
+package com.javaweb.jetty.sample.login;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
