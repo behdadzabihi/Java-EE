@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Person Management</title>
+</h:head>
+<h:body>
+    <h:form id="mainForm">
+        <p:messages showDetail="true" showSummary="true"/>
+        <p:panelGrid>
+            <p:row>
+                <p:column><p:outputLabel value="First Name"/></p:column>
+                <p:column><p:inputText id="firstName" required="true"
+                                       requiredMessage="First Name is Mandatory" value="#{personBean.person.firstName}"/><p:message for="firstName"/> </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:outputLabel value="Last Name"/></p:column>
+                <p:column><p:inputText id="lastName" value="#{personBean.person.lastName}"/></p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:outputLabel value="Age"/></p:column>
+                <p:column><p:inputNumber id="age" value="#{personBean.person.age}"/></p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:outputLabel value="Email"/></p:column>
+                <p:column><p:inputText id="email" value="#{personBean.person.email}"/></p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:outputLabel value="Card"/></p:column>
+                <p:column><p:inputText id="card" value="#{personBean.person.card}" required="true" validator="cardValidator"/><p:message for="card"/></p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:outputLabel value="City"/></p:column>
+                <p:column>
+                    <p:selectOneMenu id="city" value="#{personBean.person.city}" converter="cityConverter"  >
+                        <f:selectItems value="#{personBean.cities}" var="city" itemLabel="#{city.name}" itemValue="#{city}"/>
+                    </p:selectOneMenu>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:outputLabel value="National Code"/></p:column>
+                <p:column>
+                    <h:inputText id="nationalCode" value="#{personBean.person.nationalCode}" validatorMessage="National Code is Invalid." requiredMessage="National Code is Invalid." required="true">
+                            <f:validateLength maximum="10" minimum="10"/>
+                    </h:inputText><p:message for="nationalCode"/>
+                </p:column>
+            </p:row>
+
+            <p:row>
+                <p:column><p:commandButton value="Save"
+
+                                           actionListener="#{personBean.save}" update="@form"/></p:column>
+                <p:column><p:commandButton value="Cancel" process="@form"/></p:column>
+            </p:row>
+        </p:panelGrid>
+    </h:form>
+
+    </h:body>
+</html>
