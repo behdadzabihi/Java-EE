@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://session10.web.java.nikamooz.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="paymentService" targetNamespace="http://session10.web.java.nikamooz.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://session10.web.java.nikamooz.com/" elementFormDefault="unqualified" targetNamespace="http://session10.web.java.nikamooz.com/" version="1.0">
+
+  <xs:element name="deposit" type="tns:deposit"/>
+
+  <xs:element name="depositResponse" type="tns:depositResponse"/>
+
+  <xs:element name="withdraw" type="tns:withdraw"/>
+
+  <xs:element name="withdrawResponse" type="tns:withdrawResponse"/>
+
+  <xs:complexType name="withdraw">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:payment"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="withdrawResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deposit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:payment"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="depositResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="withdraw">
+    <wsdl:part element="tns:withdraw" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="withdrawResponse">
+    <wsdl:part element="tns:withdrawResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deposit">
+    <wsdl:part element="tns:deposit" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="depositResponse">
+    <wsdl:part element="tns:depositResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PaymentService">
+    <wsdl:operation name="withdraw">
+      <wsdl:input message="tns:withdraw" name="withdraw">
+    </wsdl:input>
+      <wsdl:output message="tns:withdrawResponse" name="withdrawResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deposit">
+      <wsdl:input message="tns:deposit" name="deposit">
+    </wsdl:input>
+      <wsdl:output message="tns:depositResponse" name="depositResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="paymentServiceSoapBinding" type="tns:PaymentService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="withdraw">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="withdraw">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="withdrawResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deposit">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deposit">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="depositResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="paymentService">
+    <wsdl:port binding="tns:paymentServiceSoapBinding" name="PaymentServiceImplPort">
+      <soap:address location="http://localhost:9091/paymentService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
