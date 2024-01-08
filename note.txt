@@ -7,3 +7,6 @@ test   test app ra run mikonad
 package compile+test
 install roye local an ra deploy mikonad jar file ha ra
 deploy roye remote deploye mikonad
+postconstructor ghabl az constructor call mishe va baraye vaghti ke injection darim chon ta vaghti ke an inject ya object sakhte nashe ma be hich service dastresi nadarim va agar bekhahim ghabl az constructor yaa inject businesi ya kari ra anjam dahim az in annotation estefade mikonim.
+baraye ye bean mikhahim ke az bayn beravad ba az anjam karash masla yek object request scope ast va ma mihahim bad az resposse logi tolid konim az in annotattion estefade mikonim.
+@ManagedProperty emkan injection bean ha ra baraye ma faraham mikonad chon ma application server avalin bar bean req/resps ra baraye ma misazad(jsf)
